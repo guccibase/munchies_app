@@ -1,0 +1,76 @@
+[
+  {
+    "placeImage": "assets/images/1.jpg",
+    "placeName": "The Hawkers",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 20
+  },
+  {
+    "placeImage": "assets/images/2.png",
+    "placeName": "Flipping Noodles",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 50
+  },
+  {
+    "placeImage": "assets/images/3.png",
+    "placeName": "Pizza Hut",
+    "placeItems": ["Pizza","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 20
+  },
+  {
+    "placeImage": "assets/images/4.jpg",
+    "placeName": "Blue Hill",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 40
+  },
+
+  {
+    "placeImage": "assets/images/5.jpg",
+    "placeName": "The Italian",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 20
+  },
+  {
+    "placeImage": "assets/images/6.jpg",
+    "placeName": "Fast Noodles",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 50
+  },
+  {
+    "placeImage": "assets/images/7.png",
+    "placeName": "Pizza Palace",
+    "placeItems": ["Pizza","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 20
+  },
+  {
+    "placeImage": "assets/images/8.jpg",
+    "placeName": "Burger Hill",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 40
+  },
+
+  {
+    "placeImage": "assets/images/9.jpg",
+    "placeName": "The Juice",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 20
+  },
+  {
+    "placeImage": "assets/images/10.jpg",
+    "placeName": "Flipping Flippers",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 50
+  },
+  {
+    "placeImage": "assets/images/11.jpg",
+    "placeName": "Pizza World",
+    "placeItems": ["Pizza","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 20
+  },
+  {
+    "placeImage": "assets/images/12.jpg",
+    "placeName": "Chinese Finesse",
+    "placeItems": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+    "minOrder": 40
+  }
+]
