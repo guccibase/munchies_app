@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
-                Sections('Favories'),
+                Sections('Favorites'),
                 Favorites(),
                 SizedBox(
                   height: 5.0,
@@ -246,8 +246,11 @@ class _RestaurantsState extends State<Restaurants> {
       print(rest.toString());
 
       rest.forEach((element) async {
-        String items = '';
-        print(items);
+        String menuItems = '';
+        List<dynamic> items = element['placeItems'];
+        items.forEach((item) {
+          menuItems += item + ' | ';
+        });
 
         restaurants.add(Padding(
           padding: EdgeInsets.all(10.0),
@@ -275,6 +278,7 @@ class _RestaurantsState extends State<Restaurants> {
                   width: 5,
                 ),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
@@ -284,7 +288,8 @@ class _RestaurantsState extends State<Restaurants> {
                           color: Colors.black,
                           fontWeight: FontWeight.w900),
                     ),
-                    Text("MinOrder"),
+                    Text(menuItems),
+                    Text("MinOrder : \$${element['minOrder'].toString()}"),
                   ],
                 )
               ],
