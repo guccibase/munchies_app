@@ -62,7 +62,7 @@
     "minOrder": 50
   },
   {
-    "placeImage": "assets/images/11.jpg",
+    "placeImage": "assets/images/11.png",
     "placeName": "Pizza World",
     "placeItems": ["Pizza","Chinese","Fast Food","Italian","Juice"],
     "minOrder": 20

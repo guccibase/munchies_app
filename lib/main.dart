@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,7 +34,6 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: screenHeight,
             width: screenWidth,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,18 +59,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
-                Text(
-                  "Favorites",
-                  style: TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.black26,
-                      fontWeight: FontWeight.w900),
-                ),
-                Divider(
-                  height: 10.0,
-                  thickness: 3,
-                ),
+                Sections('Favories'),
                 Favorites(),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Sections('All Restaurants'),
+                Restaurants()
               ],
             ),
           ),
@@ -195,6 +191,124 @@ class _FavoritesState extends State<Favorites> {
         scrollDirection: Axis.horizontal,
         children: favorites,
       ),
+    );
+  }
+}
+
+class Sections extends StatelessWidget {
+  Sections(this.header);
+
+  final String header;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            header,
+            style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.black26,
+                fontWeight: FontWeight.w900),
+          ),
+          Divider(
+            height: 10.0,
+            thickness: 3,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Restaurants extends StatefulWidget {
+  @override
+  _RestaurantsState createState() => _RestaurantsState();
+}
+
+class _RestaurantsState extends State<Restaurants> {
+  @override
+  Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+
+    Future<List<Widget>> listOfRest() async {
+      List<Widget> restaurants = [];
+
+      print('1');
+      dynamic jsonData =
+          await DefaultAssetBundle.of(context).loadString('assets/data.json');
+      print(jsonData.toString());
+
+      List<dynamic> rest = await jsonDecode(jsonData);
+      print(rest.toString());
+
+      rest.forEach((element) async {
+        String items = '';
+        print(items);
+
+        restaurants.add(Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20.0),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black26, blurRadius: 5, spreadRadius: 1)
+                ]),
+            width: width,
+            child: Row(
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    element['placeImage'],
+                    height: 80,
+                    width: 80,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      element['placeName'],
+                      style: TextStyle(
+                          fontSize: 12.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w900),
+                    ),
+                    Text("MinOrder"),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ));
+      });
+
+      return restaurants;
+    }
+
+    return FutureBuilder(
+      initialData: <Widget>[Text('')],
+      future: listOfRest(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView(
+            primary: false,
+            shrinkWrap: true,
+            children: snapshot.data,
+          );
+        }
+        return CircularProgressIndicator();
+      },
     );
   }
 }
